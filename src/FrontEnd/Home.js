@@ -1,6 +1,8 @@
 import Navebar from '../Components/Navebar';
 
 function Home() {
+    // Retrieve the token from localStorage
+    const token = localStorage.getItem('token');
     return (
       <>
       <div>
@@ -9,6 +11,7 @@ function Home() {
     <div>
       
       <h1>HOME PAGE</h1>
+      {/* <p>Token: {token}</p> */}
     </div>
     </>
     );

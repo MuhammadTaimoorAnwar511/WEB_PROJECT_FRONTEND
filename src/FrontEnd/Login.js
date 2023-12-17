@@ -1,18 +1,44 @@
-import React from 'react';
-
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 const LoginPage = () => {
     const navigate = useNavigate();
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
 
-    const handleLogin = () => {
-
-      const isLoginSuccessful = true;
+    const handleLogin = async () => {
+      try {
+        const response = await fetch('http://localhost:3001/api/client/login', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            Email: email,
+            Password: password,
+          }),
+        });
   
-      if (isLoginSuccessful) {
-        navigate('/Home'); 
+        if (response.ok) 
+        {
+        // Get the token from the response
+        const { token } = await response.json();
+        // Store the token in localStorage
+        localStorage.setItem('token', token);
+        
+          // Login successful
+          navigate('/Home');
+        } else {
+          // Login failed
+          alert('Wrong credentials. Please try again.');
+        }
+      } catch (error) {
+        console.error('Error during login:', error);
+        alert('An error occurred during login. Please try again.');
       }
     };
+   
+
   return (
     <section className="vh-100" style={{ backgroundColor: '#9A616D' }}>
       <div className="container py-5 h-100">
@@ -39,13 +65,14 @@ const LoginPage = () => {
                         Sign into your account
                       </h5>
                       <div className="form-outline mb-4">
-                        <input type="email" id="form2Example17" className="form-control form-control-lg" />
+
+                      <input type="email" id="form2Example17" className="form-control form-control-lg" value={email} onChange={(e) => setEmail(e.target.value)} />
                         <label className="form-label" htmlFor="form2Example17">
                           Email address
                         </label>
                       </div>
                       <div className="form-outline mb-4">
-                        <input type="password" id="form2Example27" className="form-control form-control-lg" />
+                      <input type="password" id="form2Example27" className="form-control form-control-lg" value={password} onChange={(e) => setPassword(e.target.value)} />
                         <label className="form-label" htmlFor="form2Example27">
                           Password
                         </label>
