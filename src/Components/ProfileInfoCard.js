@@ -39,7 +39,7 @@ const ProfileInfoCard = () => {
         User Profile
       </div>
       <div className="card-body">
-        {profileData && (
+        {profileData &&  (
           <>
             <h5 className="card-title" style={{ position: 'relative' }}>
               {profileData.FullName}

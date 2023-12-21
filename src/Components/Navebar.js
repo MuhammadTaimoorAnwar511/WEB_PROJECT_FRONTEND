@@ -19,7 +19,7 @@ const Navebar = () => {
         });
         if (response.ok) {
           const data = await response.json();
-          console.log('Received data:', data);
+         // console.log('Received data:', data);
     
           // Update this line to extract the 'notifications' array
           setNotifications(data.notifications || []);
@@ -31,7 +31,8 @@ const Navebar = () => {
       }
     };
 
-    if (dropdownOpen) {
+    if (dropdownOpen) 
+    {
       // Fetch notifications when the dropdown is opened
       fetchNotifications();
     }
@@ -76,7 +77,7 @@ const Navebar = () => {
                   aria-expanded="false"
                   onClick={toggleDropdown}
                 >
-                  <FontAwesomeIcon icon={faBell} /> {/* Notification icon */}
+                <FontAwesomeIcon icon={faBell} /> {/* Notification icon */}
                 </Link>
                 <ul className="dropdown-menu">
                   {notifications.map((notification) => (
@@ -89,7 +90,6 @@ const Navebar = () => {
                   <li>
                     <hr className="dropdown-divider" />
                   </li>
-                  
                 </ul>
               </li>
               <li className="nav-item">
