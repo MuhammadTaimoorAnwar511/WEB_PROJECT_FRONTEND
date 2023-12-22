@@ -1,5 +1,5 @@
 import Navebar from '../Components/Navebar';
-
+import ProjectCard from '../Components/Home/ProjectCard'
 function Home() {
     // Retrieve the token from localStorage
     const token = localStorage.getItem('token');
@@ -9,9 +9,7 @@ function Home() {
         <Navebar />
       </div>
     <div>
-      
-      <h1>HOME PAGE</h1>
-      {/* <p>Token: {token}</p> */}
+      <ProjectCard />
     </div>
     </>
     );
