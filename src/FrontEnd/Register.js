@@ -1,15 +1,44 @@
-import React from 'react';
+import React , { useState }from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 const RegistrationPage = () => {
   const navigate = useNavigate();
 
-  const handleRegistration = () => {   
-    const isRegistrationSuccessful = true;
-    if (isRegistrationSuccessful) {
-      navigate('/'); 
+  const [fullName, setFullName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleRegistration = async () => {
+    try {
+      const response = await fetch('http://localhost:3001/api/client/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          FullName: fullName,
+          Email: email,
+          Password: password,
+        }),
+      });
+
+      // Check if the registration was successful based on the response status
+      if (response.ok) {
+        const data = await response.json();
+        console.log('Registration successful:', data);
+
+        // Redirect to the home page or any other page after successful registration
+        navigate('/');
+      } else {
+        console.error('Registration failed:', response.statusText);
+        // Handle registration failure (e.g., show an error message to the user)
+      }
+    } catch (error) {
+      console.error('Error during registration:', error);
+      // Handle any unexpected error during registration
     }
   };
+
 
   return (
     <section className="vh-100" style={{ backgroundColor: '#9A616D' }}>
@@ -37,19 +66,19 @@ const RegistrationPage = () => {
                         Signup your account
                       </h5>
                       <div className="form-outline mb-4">
-                        <input type="text" id="form2ExampleUsername" className="form-control form-control-lg" />
+                        <input type="text" id="form2ExampleUsername" className="form-control form-control-lg" value={fullName}   onChange={(e) => setFullName(e.target.value)} />
                         <label className="form-label" htmlFor="form2ExampleUsername">
-                          Username
+                          Fullname
                         </label>
                       </div>
                       <div className="form-outline mb-4">
-                        <input type="email" id="form2ExampleEmail" className="form-control form-control-lg" />
+                        <input type="email" id="form2ExampleEmail" className="form-control form-control-lg"    value={email}   onChange={(e) => setEmail(e.target.value)} />
                         <label className="form-label" htmlFor="form2ExampleEmail">
                           Email address
                         </label>
                       </div>
                       <div className="form-outline mb-4">
-                        <input type="password" id="form2ExamplePassword" className="form-control form-control-lg" />
+                        <input type="password" id="form2ExamplePassword" className="form-control form-control-lg" value={password}   onChange={(e) => setPassword(e.target.value)} />
                         <label className="form-label" htmlFor="form2ExamplePassword">
                           Password
                         </label>

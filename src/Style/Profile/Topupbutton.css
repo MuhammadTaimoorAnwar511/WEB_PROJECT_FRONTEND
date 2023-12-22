@@ -1,0 +1,25 @@
+.Topupcontainer {
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  
+  Topupform {
+    margin-bottom: 10px;
+  }
+  
+  Topuplabel {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  Toputinput {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+  }
+  
+  .StripeCheckout {
+    display: flex;
+    justify-content: flex-start; 
+  }
+  

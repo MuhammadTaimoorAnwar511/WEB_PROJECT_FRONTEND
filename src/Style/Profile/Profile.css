@@ -1,0 +1,26 @@
+.history-container {
+    max-height: 200px;
+    overflow-y: scroll;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .history-item {
+    border-bottom: 1px solid #eee;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+  }
+  
+  .history-date {
+    font-weight: bold;
+  }
+  
+  .history-amount {
+    color: green;
+  }
+  
+  .history-message {
+    color: blue;
+  }
+  

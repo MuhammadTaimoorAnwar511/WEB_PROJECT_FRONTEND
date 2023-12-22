@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import Navebar from '../Components/Navebar';
-import ProfileInfoCard from '../Components/ProfileInfoCard';
-import TopupButtonComponent from '../Components/Topupbutton';
-import '../Style/Profile.css'; 
+import ProfileInfoCard from '../Components/Profile/ProfileInfoCard';
+import TopupButtonComponent from '../Components/Profile/Topupbutton';
+import '../Style/Profile/Profile.css'; 
 
 
 function Profile() {
@@ -71,14 +71,14 @@ function Profile() {
         <ProfileInfoCard />
       </div>
       <div>
-        <h2>TOPUP's HISTORY</h2>
         {/* DEFINE IN COMPONENTS */}
-        <TopupButtonComponent />       
+        <TopupButtonComponent />
+        <h2>TOPUP's HISTORY</h2>       
         <div className="history-container">
           {topupHistory.map((item, index) => (
             <div key={index} className="history-item">
               <p className="history-date">Date: {item.timestamp}</p>
-              <p className="history-amount">Amount: ₹{item.amount}</p>
+              <p className="history-amount">Amount: RS{item.amount}</p>
             </div>
           ))}
         </div>
