@@ -15,7 +15,7 @@ const TopupButtonComponent = () => {
   const Token = localStorage.getItem('token');//user token
   const publishableKey = 'pk_test_51OPldJFzPFUOK3imFOBg3pwRG1hGY5xrQFctU6e46OoKUd1uruLRlcoeYnEKDQnDqIVYmI3MZOEf2TNiXjPt1p7E00Av4w9JbM';
 
-  const [topupAmount, setTopupAmount] = useState(0);
+  const [topupAmount, setTopupAmount] = useState(10);
 
   const handleSuccess = () => {
     MySwal.fire({
@@ -65,7 +65,7 @@ const TopupButtonComponent = () => {
             type="number"
             value={topupAmount}
             onChange={(e) => setTopupAmount(parseFloat(e.target.value))}
-            min="0"
+            min="10"
            step="0.01"
           />
         </label>

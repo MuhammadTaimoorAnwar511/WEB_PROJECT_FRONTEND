@@ -1,14 +1,27 @@
 // MyVerticallyCenteredModal.js
 import React from 'react';
+import { useState, useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import '../../Style/Home/projectDetail.css'; 
-
+import ProjectEdit from './projectEdit';
 
 function ProjectDetail(props) {
   const { project } = props;
+/////////////////////////////////// 
+  const [showEditModal, setShowEditModal] = useState(false);
+
+  //const handleEditModalShow = () =>{ setShowEditModal(true)};
+  const handleEditModalShow = () => {setShowEditModal(true); 
+    // props.onHide();
+   };
+  const handleEditModalClose = () => setShowEditModal(false);
+
+//////////////////////////////////
+
 
   return (
+    <>
     <Modal {...props} size="lg" aria-labelledby="contained-modal-title-vcenter" centered>
       <Modal.Header className="ModalHeader" closeButton>
         <Modal.Title id="contained-modal-title-vcenter" className="ProjectDetailTitle">
@@ -31,14 +44,18 @@ function ProjectDetail(props) {
         </div>
       </Modal.Body>
       <Modal.Footer className="ModalFooter">
-        <Button variant="secondary" className="ButtonClose" onClick={props.onHide}>
+        <Button variant="secondary" className="ButtonClose" onClick={props.onHide} >
           Close
         </Button>
-        <Button variant="primary" className="ButtonSaveChanges">
+        <Button variant="primary" className="ButtonSaveChanges" onClick={handleEditModalShow}>
           Edit Detail
         </Button>
       </Modal.Footer>
     </Modal>
+    <ProjectEdit show={showEditModal} onHide={handleEditModalClose} project={project} parentOnHide={props.onHide}/>
+     {/* <ProjectEdit show={showEditModal} onHide={handleEditModalClose} project={project} /> */}
+
+    </>    
   );
 }
 
