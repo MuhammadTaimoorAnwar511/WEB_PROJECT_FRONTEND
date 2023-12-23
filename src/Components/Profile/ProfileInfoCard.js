@@ -45,7 +45,7 @@ const ProfileInfoCard = () => {
           <>
             <h5 className="card-title" style={{ position: 'relative' }}>
               {profileData.FullName}
-              <span className="edit-icon" style={{ position: 'absolute',top: '50%',right: 0,transform: 'translateY(-50%)',marginLeft: '10px', }} >
+              <span  style={{ position: 'absolute',top: '50%',right: 0,transform: 'translateY(-50%)',marginLeft: '10px', }} >
                 <FontAwesomeIcon icon={faEdit} onClick={() => setModalShow(true)} />
               </span>
             </h5>

@@ -9,6 +9,7 @@ function Home() {
         <Navebar />
       </div>
     <div>
+      {/* define in component */}
       <ProjectCard />
     </div>
     </>
