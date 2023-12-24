@@ -18,21 +18,19 @@ function ProjectEdit(props) {
     Username: project.Username,
     Assigned: project.Assigned,
     AssignedUsername: project.AssignedUsername,
-    Keywords:  [],
+    Keywords: [],
   });
 
   const handleFieldChange = (fieldName, value) => {
 
-    if (fieldName === 'Keywords') 
-    {
+    if (fieldName === 'Keywords') {
       const keywordsArray = value.replace(/^\s*,/, '').split(',').map(keyword => keyword.trim());
       setEditedProject({
         ...editedProject,
         [fieldName]: keywordsArray,
       });
     }
-     else
-    {
+    else {
       setEditedProject({
         ...editedProject,
         [fieldName]: value,
@@ -52,11 +50,20 @@ function ProjectEdit(props) {
       });
 
       if (!response.ok) {
+        const errorResponse = await response.json();
+        console.error('Failed to update project:', errorResponse);
+
+        // Check if the error response contains insufficient balance message
+        if (errorResponse.error === 'Insufficient balance. Please top up.') {
+          // Show an alert to the user
+          alert('Insufficient balance. Please top up.');
+        }
+
         throw new Error('Failed to update project');
       }
 
       const updatedProject = await response.json();
-     // console.log('Project updated successfully:', updatedProject);
+      // console.log('Project updated successfully:', updatedProject);
 
       setEditedProject({
         ...editedProject,
@@ -71,11 +78,12 @@ function ProjectEdit(props) {
       });
 
       props.onHide();
-      props.parentOnHide(); 
+      props.parentOnHide();
     } catch (error) {
       console.error('Error updating project:', error);
     }
   };
+
 
   return (
     <Modal {...props} size="lg" aria-labelledby="contained-modal-title-vcenter" centered>

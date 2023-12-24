@@ -94,8 +94,8 @@ const Navebar = () => {
                 </ul>
               </li>
               <li className="nav-item">
-                <Link to="/orders" className="nav-link">
-                  Orders
+                <Link to="/FreeLancerMarketPlace" className="nav-link">
+                  FreeLancer MarketPlace
                 </Link>
               </li>
               <Link to="/dashboard" className="nav-link">

@@ -187,7 +187,7 @@ function ProjectCard() {
   /////////////////////////////////
   return (
     <div>
-       <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" value={waitingProjectssearchTerm} onChange={(e) => waitingProjectssetSearchTerm(e.target.value)} style={{ width: '200px', marginBottom: '10px', marginTop:'10px', padding: '8px', borderRadius: '5px', border: '1px solid #ccc', fontSize: '16px', transition: 'border-color 0.3s ease-in-out', }} />
+      <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" value={waitingProjectssearchTerm} onChange={(e) => waitingProjectssetSearchTerm(e.target.value)} style={{ width: '200px', marginBottom: '10px', marginTop: '10px', padding: '8px', borderRadius: '5px', border: '1px solid #ccc', fontSize: '16px', transition: 'border-color 0.3s ease-in-out', }} />
       {/* PROJECT WAITING FOR APPROVAL */}
       <h2 style={{ borderTop: '2px solid #ccc', padding: '10px' }}>Projects Waiting for Approval</h2>
       <div style={{ display: 'flex', flexWrap: 'wrap' }}>
