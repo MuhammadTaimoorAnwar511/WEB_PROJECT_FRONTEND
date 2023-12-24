@@ -2,8 +2,7 @@ import { useState, useEffect } from 'react';
 import Navebar from '../Components/Navebar';
 import ProfileInfoCard from '../Components/Profile/ProfileInfoCard';
 import TopupButtonComponent from '../Components/Profile/Topupbutton';
-import '../Style/Profile/Profile.css'; 
-
+import '../Style/Profile/Profile.css';
 
 function Profile() {
   // Retrieve the token from localStorage
@@ -15,6 +14,7 @@ function Profile() {
   const [paymentHistory, setPaymentHistory] = useState([]);
 
   useEffect(() => {
+    console.log("topup history  use effect trigger");
     // Function to fetch top-up history
     const fetchTopupHistory = async () => {
       try {
@@ -30,12 +30,18 @@ function Profile() {
         }
 
         const data = await response.json();
-        setTopupHistory(data.topUpHistory); 
+        setTopupHistory(data.topUpHistory);
       } catch (error) {
         console.error(error.message);
       }
     };
 
+    // Call the fetch function
+    fetchTopupHistory();
+  }, [token,topupHistory]); // Call the effect when the token changes
+
+  useEffect(() => {
+    console.log("payment history  use effect for payment history trigger");
     // Function to fetch payment history
     const fetchPaymentHistory = async () => {
       try {
@@ -57,15 +63,14 @@ function Profile() {
       }
     };
 
-    // Call the fetch functions
-    fetchTopupHistory();
+    // Call the fetch function
     fetchPaymentHistory();
-  }, [token,topupHistory,paymentHistory]); // Call the effect when the token,topupHistory,paymentHistory changes
+  }, [token,paymentHistory]); // Call the effect when the token changes
 
   return (
     <>
       <div>
-      {/* define in component */}
+        {/* define in component */}
         <Navebar />
         {/* define in component */}
         <ProfileInfoCard />
@@ -73,7 +78,7 @@ function Profile() {
       <div>
         {/* DEFINE IN COMPONENTS */}
         <TopupButtonComponent />
-        <h2>TOPUP's HISTORY</h2>       
+        <h2>TOPUP's HISTORY</h2>
         <div className="history-container">
           {topupHistory.map((item, index) => (
             <div key={index} className="history-item">

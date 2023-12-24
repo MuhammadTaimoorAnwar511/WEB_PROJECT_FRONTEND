@@ -13,6 +13,7 @@ function ProjectEdit(props) {
     Title: project.Title,
     Requirements: project.Requirements,
     Description: project.Description,
+    Budget: project.Budget,
     UserId: project.UserId,
     Username: project.Username,
     Assigned: project.Assigned,
@@ -21,13 +22,17 @@ function ProjectEdit(props) {
   });
 
   const handleFieldChange = (fieldName, value) => {
-    if (fieldName === 'Keywords') {
+
+    if (fieldName === 'Keywords') 
+    {
       const keywordsArray = value.replace(/^\s*,/, '').split(',').map(keyword => keyword.trim());
       setEditedProject({
         ...editedProject,
         [fieldName]: keywordsArray,
       });
-    } else {
+    }
+     else
+    {
       setEditedProject({
         ...editedProject,
         [fieldName]: value,
@@ -59,6 +64,7 @@ function ProjectEdit(props) {
         Title: updatedProject.project.Title,
         Requirements: updatedProject.project.Requirements,
         Description: updatedProject.project.Description,
+        Budget: updatedProject.project.Budget,
         Assigned: updatedProject.project.Assigned,
         AssignedUsername: updatedProject.project.AssignedUsername,
         Keywords: updatedProject.project.Keywords,
@@ -85,6 +91,7 @@ function ProjectEdit(props) {
           <p><b>PROJECT Title:</b>{' '} <input type="text" value={editedProject.Title} onChange={(e) => handleFieldChange('Title', e.target.value)} /></p>
           <b>PROJECT Requirements:</b>{' '}<textarea type="text" value={editedProject.Requirements} onChange={(e) => handleFieldChange('Requirements', e.target.value)} />
           <p><b>PROJECT Description:</b>{' '} <textarea type="text" value={editedProject.Description} onChange={(e) => handleFieldChange('Description', e.target.value)} /></p>
+          <p><b>PROJECT Budget:</b> <input type="text" value={editedProject.Budget} onChange={(e) => handleFieldChange('Budget', e.target.value)} /></p>
           <p><b>PROJECT UserId:</b> {editedProject.UserId}</p>
           <p><b>PROJECT Username:</b> {editedProject.Username}</p>
           <p><b>PROJECT FreelancerId:</b> {editedProject.Assigned}</p>

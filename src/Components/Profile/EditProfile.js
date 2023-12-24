@@ -41,7 +41,7 @@ function EditIcon(props)
           .then(response => response.json())
           .then(data => {
             // Handle success, e.g., close the modal or show a success message
-            console.log('Update successful', data);
+            //console.log('Update successful', data);
             props.onHide();
           })
           .catch(error => {

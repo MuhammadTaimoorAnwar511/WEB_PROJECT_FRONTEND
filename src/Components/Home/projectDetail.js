@@ -35,6 +35,7 @@ function ProjectDetail(props) {
             <p><b>PROJECT Title:</b> {project.Title}</p>
             <p><b>PROJECT Requirements:</b> {project.Requirements}</p>
             <p><b>PROJECT Description:</b> {project.Description}</p>
+            <p><b>PROJECT Budget:</b> {project.Budget}</p>
             <p><b>PROJECT UserId:</b> {project.UserId}</p>
             <p><b>PROJECT Username:</b> {project.Username}</p>
             <p><b>PROJECT FreelancerId:</b> {project.Assigned}</p>
@@ -47,9 +48,14 @@ function ProjectDetail(props) {
         <Button variant="secondary" className="ButtonClose" onClick={props.onHide} >
           Close
         </Button>
-        <Button variant="primary" className="ButtonSaveChanges" onClick={handleEditModalShow}>
+        {/* <Button variant="primary" className="ButtonSaveChanges" onClick={handleEditModalShow}>
           Edit Detail
-        </Button>
+        </Button> */}
+        {project.Status === 'WAITING FOR APPROVAL' && (
+            <Button variant="primary" className="ButtonSaveChanges" onClick={handleEditModalShow}>
+              Edit Detail
+            </Button>
+          )}
       </Modal.Footer>
     </Modal>
     <ProjectEdit show={showEditModal} onHide={handleEditModalClose} project={project} parentOnHide={props.onHide}/>

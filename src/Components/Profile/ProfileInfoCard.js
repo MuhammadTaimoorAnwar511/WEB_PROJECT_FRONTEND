@@ -10,6 +10,7 @@ const ProfileInfoCard = () => {
   const [modalShow, setModalShow] = useState(false);
 
   useEffect(() => {
+    console.log("profile infocard use effect trigger");
     const fetchProfileData = async () => {
       try {
         const response = await fetch('http://localhost:3001/api/client/profile', {
@@ -21,7 +22,7 @@ const ProfileInfoCard = () => {
 
         if (response.ok) {
           const data = await response.json();
-          console.log('Received profile data:', data);
+          //console.log('Received profile data:', data);
           setProfileData(data);
  
         } else {
