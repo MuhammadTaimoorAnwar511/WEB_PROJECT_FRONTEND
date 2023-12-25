@@ -1,0 +1,61 @@
+/* Chat container styles */
+.chat-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; /* Adjust alignment as needed */
+  }
+  
+  /* Chat icon styles */
+  .chat-icon {
+    margin-left: 100px;
+    cursor: pointer;
+  }
+  
+  /* Offcanvas styles */
+  .offcanvas-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  .offcanvas-body {
+    max-height: 300px; /* Adjust the maximum height of the chat body */
+    overflow-y: auto;
+  }
+  
+  /* Message list styles */
+  .message-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .message-item {
+    margin-bottom: 10px;
+  }
+  
+  /* Form styles */
+  .message-form {
+    display: flex;
+    margin-top: 10px;
+  }
+  
+  .message-input {
+    flex: 1;
+    padding: 8px;
+    margin-right: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .message-submit {
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .message-submit:hover {
+    background-color: #45a049;
+  }
+  

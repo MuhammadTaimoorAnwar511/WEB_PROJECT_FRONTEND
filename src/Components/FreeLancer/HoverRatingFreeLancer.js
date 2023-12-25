@@ -1,5 +1,6 @@
 import ReactStars from "react-rating-stars-component";
 import React from "react";
+import ChatFreelancer from './ChatFreelancer';
 
 const HoverRatingFreeLancer = ({ freelancerId}) => {
 
@@ -28,12 +29,15 @@ const HoverRatingFreeLancer = ({ freelancerId}) => {
   };
 
   return (
+    <>
     <ReactStars
       count={5}
       onChange={ratingChanged}
       size={24}
       activeColor="#ffd700"
     />
+    
+    </>
   );
 };
 
