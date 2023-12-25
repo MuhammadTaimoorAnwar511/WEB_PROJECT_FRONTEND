@@ -7,7 +7,6 @@ import { faEdit, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 
 function ProjectCard() {
 
-
   const [waitingProjects, setWaitingProjects] = useState([]);
   const [approvedProjects, setApprovedProjects] = useState([]);
   const [deliveredProjects, setDeliveredProjects] = useState([]);

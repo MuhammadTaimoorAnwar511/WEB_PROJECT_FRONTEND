@@ -30,7 +30,6 @@ function DetailFreeLancer(props) {
             <p><b>Full Name:</b> {freelancer.FullName}</p>
             <p><b>Email:</b> {freelancer.Email}</p>
             <p><b>Specialities:</b> {freelancer.Specialities.join(', ')}</p>
-            <p><b>Samples Project:</b></p>
           </div>
         </Modal.Body>
         <Modal.Footer className="ModalFooter">

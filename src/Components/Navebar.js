@@ -20,8 +20,8 @@ const Navebar = () => {
         });
         if (response.ok) {
           const data = await response.json();
-         // console.log('Received data:', data);
-    
+          // console.log('Received data:', data);
+
           // Update this line to extract the 'notifications' array
           setNotifications(data.notifications || []);
         } else {
@@ -32,8 +32,7 @@ const Navebar = () => {
       }
     };
 
-    if (dropdownOpen) 
-    {
+    if (dropdownOpen) {
       // Fetch notifications when the dropdown is opened
       fetchNotifications();
     }
@@ -59,14 +58,14 @@ const Navebar = () => {
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
-          <span className="navbar-toggler-icon"></span>
+            <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
                 {/* <a className="nav-link active" aria-current="page" href="#">Home</a> */}
                 <Link to="/Home" className="nav-link" aria-current="page">
-                <FontAwesomeIcon icon={faHome} /> {/* Home icon */}
+                  <FontAwesomeIcon icon={faHome} /> {/* Home icon */}
                 </Link>
               </li>
               <li className="nav-item dropdown">
@@ -78,7 +77,7 @@ const Navebar = () => {
                   aria-expanded="false"
                   onClick={toggleDropdown}
                 >
-                <FontAwesomeIcon icon={faBell} /> {/* Notification icon */}
+                  <FontAwesomeIcon icon={faBell} /> {/* Notification icon */}
                 </Link>
                 <ul className="dropdown-menu">
                   {notifications.map((notification) => (
@@ -98,43 +97,16 @@ const Navebar = () => {
                   FreeLancer MarketPlace
                 </Link>
               </li>
-              <Link to="/dashboard" className="nav-link">
-                Dashboard
+              <Link to="/SellerMarketPlace" className="nav-link">
+                Seller MarketPlace
               </Link>
-              <li className="nav-item dropdown">
-                <a
-                  className="nav-link dropdown-toggle"
-                  href="#"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  Dropdown
-                </a>
-                <ul className="dropdown-menu">
-                  <li>
-                    <a className="dropdown-item" href="#">
-                      Action
-                    </a>
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="#">
-                      Another action
-                    </a>
-                  </li>
-                  <li>
-                    <hr className="dropdown-divider" />
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="#">
-                      Something else here
-                    </a>
-                  </li>
-                </ul>
-              </li>
+              <Link to="/PurchasedProduct" className="nav-link">
+                PurchasedProduct
+              </Link>
+
             </ul>
             <form className="d-flex" role="search">
-              <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
+              <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
               <button className="btn btn-outline-success" type="submit">
                 Search
               </button>
