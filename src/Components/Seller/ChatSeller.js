@@ -21,6 +21,7 @@ function ChatSeller({ sellerId, sellerName }) {
 function OffCanvasExampleSeller({ sellerId, sellerName, placement }) {
   const [show, setShow] = useState(false);
   const [messages, setMessages] = useState([]);
+  const [newMessage, setNewMessage] = useState('');
 
   const handleClose = () => setShow(false);
   const handleShow = () => {
@@ -56,15 +57,16 @@ function OffCanvasExampleSeller({ sellerId, sellerName, placement }) {
       });
       // Fetch messages after sending a new message
       fetchMessages();
+      setNewMessage('');
     } catch (error) {
       console.error('Error sending message:', error);
     }
   };
 
   useEffect(() => {
-    console.log("chat use effect triggered");
+    console.log("seller chat use effect triggered");
     fetchMessages();
-  }, [sellerId]);
+  }, [sellerId,messages]);
 
   return (
     <>
@@ -81,6 +83,7 @@ function OffCanvasExampleSeller({ sellerId, sellerName, placement }) {
             Chatting with: {sellerName}
           </Offcanvas.Title>
         </Offcanvas.Header>
+        
         <Offcanvas.Body className="offcanvas-body">
           {/* Render the list of messages */}
           <ul className="message-list">
@@ -90,27 +93,27 @@ function OffCanvasExampleSeller({ sellerId, sellerName, placement }) {
               </li>
             ))}
           </ul>
-          {/* Add a form to send new messages */}
-          <form
-            onSubmit={(e) => {
-              e.preventDefault();
-              const newMessage = e.target.message.value;
-              sendMessage(newMessage);
-              e.target.message.value = '';
-            }}
-            className="message-form"
-          >
-            <input
-              type="text"
-              name="message"
-              placeholder="Type your message"
-              className="message-input"
-            />
-            <button type="submit" className="message-submit">
-              Send
-            </button>
-          </form>
         </Offcanvas.Body>
+        {/* Add a form to send new messages */}
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            sendMessage(newMessage);
+          }}
+          className="message-form"
+        >
+          <input
+            type="text"
+            name="message"
+            value={newMessage}
+            onChange={(e) => setNewMessage(e.target.value)}
+            placeholder="Type your message"
+            className="message-input"
+          />
+          <button type="submit" className="message-submit">
+            Send
+          </button>
+        </form>
       </Offcanvas>
     </>
   );

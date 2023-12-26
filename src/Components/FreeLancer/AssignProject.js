@@ -16,7 +16,7 @@ function AssignProject(props) {
         Title: '',
         Requirements: '',
         Description: '',
-        Budget: '',
+        Budget: 0.0,
         Keywords: '',
     });
 

@@ -56,6 +56,7 @@ const TopupButtonComponent = () => {
   };
 
   return (
+    <div style={{ background: 'linear-gradient(to right, #000000, #3533CD)', padding: '20px', minHeight: '15vh', fontFamily: 'Arial, sans-serif', color: '#ffffff', }}>
     <div className="Topupcontainer">
       {/* <h2>Top-Up Balance</h2> */}
       <form className="Topupform">
@@ -80,6 +81,7 @@ const TopupButtonComponent = () => {
         description={`Top-Up Amount: RS${topupAmount.toFixed(2)}`}
         token={payNow}
       />
+    </div>
     </div>
   );
 };

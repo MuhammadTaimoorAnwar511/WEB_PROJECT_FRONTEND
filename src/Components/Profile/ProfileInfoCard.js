@@ -37,11 +37,13 @@ const ProfileInfoCard = () => {
   }, [token,profileData]);
 
   return (
+    <div style={{ background: 'linear-gradient(to right, #000000, #3533CD)', padding: '20px', minHeight: '50vh', fontFamily: 'Arial, sans-serif', color: '#ffffff', }}>
     <div className="card">
+      
       <div className="card-header">
         User Profile
       </div>
-      <div className="card-body">
+      <div className="card-body" >
         {profileData &&  (
           <>
             <h5 className="card-title" style={{ position: 'relative' }}>
@@ -59,6 +61,7 @@ const ProfileInfoCard = () => {
         )}
       </div>
       <EditIcon show={modalShow} onHide={() => setModalShow(false)} />
+    </div>
     </div>
   );
 };

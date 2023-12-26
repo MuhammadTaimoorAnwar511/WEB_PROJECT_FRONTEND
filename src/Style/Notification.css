@@ -1,0 +1,52 @@
+/* Styling for the notification dropdown */
+.dropdown-menu {
+    max-height: 300px; /* Set the maximum height of the dropdown */
+    overflow-y: auto; /* Enable vertical scrollbar if content exceeds the max height */
+    border: none; /* Remove default border */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
+    border-radius: 8px; /* Add border-radius for a rounded look */
+    max-width: 1200px;
+  }
+  
+  /* Styling for individual notification cards */
+/* Styling for individual notification cards */
+.dropdown-item {
+  display: -moz-stack;
+  padding: 10px;
+  border-bottom: 1px solid #ddd; /* Add a bottom border between cards */
+
+  /* 3D Card Effect */
+  transform: perspective(1000px) rotateX(0deg);
+  transform-origin: center bottom;
+  backface-visibility: hidden;
+
+  /* Hover effect to create a lift */
+  &:hover {
+      transform: perspective(1000px) rotateX(-3deg);
+  }
+
+  /* Allow text to wrap to the next line */
+  white-space: pre-wrap; 
+  word-wrap: break-word;
+}
+
+  
+  /* Remove default styles for dropdown divider */
+  .dropdown-divider {
+    display: none;
+  }
+  
+  /* Add styling for the scroll bar */
+  .dropdown-menu::-webkit-scrollbar {
+    width: 8px; /* Set the width of the scrollbar */
+  }
+  
+  .dropdown-menu::-webkit-scrollbar-thumb {
+    background-color: #6c757d; /* Color of the scrollbar thumb */
+    border-radius: 4px; /* Border-radius for a rounded thumb */
+  }
+  
+  .dropdown-menu::-webkit-scrollbar-track {
+    background-color: #f8f9fa; /* Color of the scrollbar track */
+  }
+  

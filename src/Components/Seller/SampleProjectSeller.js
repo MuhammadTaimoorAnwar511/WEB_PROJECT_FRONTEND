@@ -14,6 +14,7 @@ function SellerProjectsSeller(props) {
     const [sellerProjects, setSellerProjects] = useState(null);
 
     useEffect(() => {
+        console.log("seller smaple project use effect trigger");
         const fetchSellerProjects = async () => {
             try {
                 const response = await fetch(`http://localhost:3001/api/client/sellerprojects/${seller?._id}`);
@@ -86,43 +87,47 @@ function SellerProjectsSeller(props) {
                 <Modal.Header closeButton>
                     <Modal.Title>Seller: {seller?.FullName}</Modal.Title>
                 </Modal.Header>
-                <Modal.Body>
-                    {sellerProjects !== null ? (
-                        sellerProjects.length === 0 ? (
-                            <p>No projects uploaded by the seller {seller?.FullName}.</p>
-                        ) : (
-                            <Row xs={1} md={2} className="g-4">
-                                {sellerProjects.map((project, idx) => (
-                                    <Col key={idx}>
-                                        <Card>
-                                            {project?.ImagePaths && project.ImagePaths.length > 0 && (
-                                                <Card.Img variant="top" src={project.ImagePaths[0]} />
-                                            )}
-                                            <Card.Body>
-                                                {project?.Title && <Card.Title>{project.Title}</Card.Title>}
-                                                {project?._id && <Card.Text>ID: {project._id}</Card.Text>}
-                                                {project?.Description && <Card.Text>{project.Description}</Card.Text>}
-                                                {project?.Technologies && (
-                                                    <Card.Text>Technologies: {project.Technologies.join(', ')}</Card.Text>
+                <div style={{ background: 'linear-gradient(to right, #000000, #3533CD)', padding: '20px', minHeight: '5vh', fontFamily: 'Arial, sans-serif', color: '#ffffff', }}>
+                    <Modal.Body>
+                        {sellerProjects !== null ? (
+                            sellerProjects.length === 0 ? (
+                                <p>No projects uploaded by the seller {seller?.FullName}.</p>
+                            ) : (
+                                <Row xs={1} md={2} className="g-4">
+                                    {sellerProjects.map((project, idx) => (
+                                        <Col key={idx}>
+                                            <Card>
+                                                {project?.ImagePaths && project.ImagePaths.length > 0 && (
+                                                    <Card.Img variant="top" src={project.ImagePaths[0]} />
                                                 )}
-                                                <Card.Text>Average Rating: {project.AvgRating.toFixed(1)}</Card.Text>
-                                                {project?.Price && <Card.Text>Price: {project.Price}</Card.Text>}
-                                                <HoverRatingSeller projectId={project._id} />
-                                                <span className="float-end">
-                                                    <Button variant="outline-primary" onClick={() => handleBuyClick(project._id)}>
-                                                        Buy
-                                                    </Button>
-                                                </span>
-                                            </Card.Body>
-                                        </Card>
-                                    </Col>
-                                ))}
-                            </Row>
-                        )
-                    ) : (
-                        <p>Loading...</p>
-                    )}
-                </Modal.Body>
+                                                <Card.Body>
+                                                    {project?.Title && <Card.Title>{project.Title}</Card.Title>}
+                                                    {project?._id && <Card.Text>ID: {project._id}</Card.Text>}
+                                                    {project?.Description && <Card.Text>{project.Description}</Card.Text>}
+                                                    {project?.Technologies && (
+                                                        <Card.Text>Technologies: {project.Technologies.join(', ')}</Card.Text>
+                                                    )}
+                                                    <Card.Text>Average Rating: {project.AvgRating.toFixed(1)}</Card.Text>
+                                                    {project?.Price && <Card.Text>Price: {project.Price}</Card.Text>}
+                                                    {project?.Revenue && <Card.Text>Revenue: {project.Revenue}</Card.Text>}
+                                                    {project?.Sales && <Card.Text>sales: {project.Sales}</Card.Text>}
+                                                    <HoverRatingSeller projectId={project._id} />
+                                                    <span className="float-end">
+                                                        <Button variant="outline-primary" onClick={() => handleBuyClick(project._id)}>
+                                                            Buy
+                                                        </Button>
+                                                    </span>
+                                                </Card.Body>
+                                            </Card>
+                                        </Col>
+                                    ))}
+                                </Row>
+                            )
+                        ) : (
+                            <p>Loading...</p>
+                        )}
+                    </Modal.Body>
+                </div>
             </Modal>
         </>
     );

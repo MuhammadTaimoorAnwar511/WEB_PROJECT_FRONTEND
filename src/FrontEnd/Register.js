@@ -21,24 +21,31 @@ const RegistrationPage = () => {
           Password: password,
         }),
       });
-
+  
       // Check if the registration was successful based on the response status
       if (response.ok) {
         const data = await response.json();
         console.log('Registration successful:', data);
-
+  
         // Redirect to the home page or any other page after successful registration
         navigate('/');
       } else {
-        console.error('Registration failed:', response.statusText);
-        // Handle registration failure (e.g., show an error message to the user)
+        const errorData = await response.json();
+  
+        if (errorData.error === 'User already exists') {
+          // Send an alert to the user if the registration fails due to an existing user
+          alert('Registration failed: User already exists');
+        } else {
+          console.error('Registration failed:', response.statusText);
+          // Handle other registration failures (e.g., show an error message to the user)
+        }
       }
     } catch (error) {
       console.error('Error during registration:', error);
       // Handle any unexpected error during registration
     }
   };
-
+  
 
   return (
     <section className="vh-100" style={{ backgroundColor: '#9A616D' }}>

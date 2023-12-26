@@ -3,7 +3,7 @@ import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import ProjectDetail from './projectDetail';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEdit, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
+import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 
 function ProjectCard() {
 
@@ -15,7 +15,6 @@ function ProjectCard() {
   const [selectedProject, setSelectedProject] = useState(null);
   ////
   const [waitingProjectssearchTerm, waitingProjectssetSearchTerm] = useState('');
-
   ////
   useEffect(() => {
     console.log("project waiting for approval use effect trigger");
@@ -185,7 +184,7 @@ function ProjectCard() {
 
   /////////////////////////////////
   return (
-    <div>
+    <div style={{ background: 'linear-gradient(to right, #000000, #3533CD)', padding: '20px', minHeight: '100vh', fontFamily: 'Arial, sans-serif', color: '#ffffff', }}>
       <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" value={waitingProjectssearchTerm} onChange={(e) => waitingProjectssetSearchTerm(e.target.value)} style={{ width: '200px', marginBottom: '10px', marginTop: '10px', padding: '8px', borderRadius: '5px', border: '1px solid #ccc', fontSize: '16px', transition: 'border-color 0.3s ease-in-out', }} />
       {/* PROJECT WAITING FOR APPROVAL */}
       <h2 style={{ borderTop: '2px solid #ccc', padding: '10px' }}>Projects Waiting for Approval</h2>

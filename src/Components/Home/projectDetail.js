@@ -1,6 +1,6 @@
 // MyVerticallyCenteredModal.js
 import React from 'react';
-import { useState, useEffect } from 'react';
+import { useState} from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import '../../Style/Home/projectDetail.css'; 
@@ -17,9 +17,6 @@ function ProjectDetail(props) {
    };
   const handleEditModalClose = () => setShowEditModal(false);
 
-//////////////////////////////////
-
-
   return (
     <>
     <Modal {...props} size="lg" aria-labelledby="contained-modal-title-vcenter" centered>
@@ -29,7 +26,9 @@ function ProjectDetail(props) {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <div className="ProjectDetailContainer">
+      <div
+            className="ProjectDetailContainer"
+            style={{maxHeight: '300px',overflowY: 'auto', padding: '10px'}}>
             <p><b>PROJECT ID:</b> {project._id}</p>
             <p><b>PROJECT Deadline:</b> {project.Deadline}</p>
             <p><b>PROJECT Title:</b> {project.Title}</p>

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faBell, faHome, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+import '../Style/Notification.css';
 
 const Navebar = () => {
   const [notifications, setNotifications] = useState([]);
@@ -36,7 +37,7 @@ const Navebar = () => {
       // Fetch notifications when the dropdown is opened
       fetchNotifications();
     }
-  }, [dropdownOpen, token]);
+  }, [dropdownOpen, token,notifications]);
 
   const toggleDropdown = () => {
     setDropdownOpen(!dropdownOpen);
@@ -105,12 +106,7 @@ const Navebar = () => {
               </Link>
 
             </ul>
-            <form className="d-flex" role="search">
-              <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-              <button className="btn btn-outline-success" type="submit">
-                Search
-              </button>
-            </form>
+
             <Link to="/" className="nav-link">
               <FontAwesomeIcon icon={faSignOutAlt} />
             </Link>

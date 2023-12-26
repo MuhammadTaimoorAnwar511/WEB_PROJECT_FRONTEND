@@ -75,7 +75,7 @@ function Profile() {
         {/* define in component */}
         <ProfileInfoCard />
       </div>
-      <div>
+      <div style={{ background: 'linear-gradient(to right, #000000, #3533CD)', padding: '20px', minHeight: '15vh', fontFamily: 'Arial, sans-serif', color: '#ffffff', }}>
         {/* DEFINE IN COMPONENTS */}
         <TopupButtonComponent />
         <h2>TOPUP's HISTORY</h2>
@@ -88,7 +88,7 @@ function Profile() {
           ))}
         </div>
       </div>
-      <div>
+      <div style={{ background: 'linear-gradient(to right, #000000, #3533CD)', padding: '20px', minHeight: '15vh', fontFamily: 'Arial, sans-serif', color: '#ffffff', }}>
         <h2>Payments HISTORY</h2>
         <div className="history-container">
           {paymentHistory.map((item, index) => (

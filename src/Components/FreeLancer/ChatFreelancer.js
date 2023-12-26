@@ -3,25 +3,11 @@ import Offcanvas from 'react-bootstrap/Offcanvas';
 import { FaComment } from 'react-icons/fa';
 import '../../Style/FreeLancer/Chat.css';
 
-function ChatFreelancer({ freelancerId, freelancerName }) {
-  const token = localStorage.getItem('token');
-  return (
-    <>
-      {['end'].map((placement, idx) => (
-        <OffCanvasExample
-          key={idx}
-          placement={placement}
-          freelancerId={freelancerId}
-          freelancerName={freelancerName}
-        />
-      ))}
-    </>
-  );
-}
 
 function OffCanvasExample({ freelancerId, freelancerName, placement }) {
   const [show, setShow] = useState(false);
   const [messages, setMessages] = useState([]);
+  const [newMessage, setNewMessage] = useState('');
 
   const handleClose = () => setShow(false);
   const handleShow = () => {
@@ -45,7 +31,7 @@ function OffCanvasExample({ freelancerId, freelancerName, placement }) {
   };
 
   // Function to send a new message
-  const sendMessage = async (message) => {
+  const sendMessage = async () => {
     try {
       await fetch(`http://localhost:3001/api/client/sendmessage/${freelancerId}`, {
         method: 'POST',
@@ -53,10 +39,11 @@ function OffCanvasExample({ freelancerId, freelancerName, placement }) {
           Authorization: `Bearer ${localStorage.getItem('token')}`,
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ message }),
+        body: JSON.stringify({ message: newMessage }),
       });
       // Fetch messages after sending a new message
       fetchMessages();
+      setNewMessage('');
     } catch (error) {
       console.error('Error sending message:', error);
     }
@@ -65,7 +52,7 @@ function OffCanvasExample({ freelancerId, freelancerName, placement }) {
   useEffect(() => {
     console.log("chat use effect triggered");
     fetchMessages();
-  }, [freelancerId]);
+  }, [freelancerId,messages]);
 
   return (
     <>
@@ -76,12 +63,13 @@ function OffCanvasExample({ freelancerId, freelancerName, placement }) {
       >
         <FaComment size={24} />
       </span>
+        
       <Offcanvas show={show} onHide={handleClose} className="chat-container">
         <Offcanvas.Header closeButton>
           <Offcanvas.Title className="offcanvas-title">
             Chatting with: {freelancerName}
           </Offcanvas.Title>
-        </Offcanvas.Header>
+        </Offcanvas.Header> 
         <Offcanvas.Body className="offcanvas-body">
           {/* Render the list of messages */}
           <ul className="message-list">
@@ -91,28 +79,29 @@ function OffCanvasExample({ freelancerId, freelancerName, placement }) {
               </li>
             ))}
           </ul>
-          {/* Add a form to send new messages */}
-          <form
-            onSubmit={(e) => {
-              e.preventDefault();
-              const newMessage = e.target.message.value;
-              sendMessage(newMessage);
-              e.target.message.value = '';
-            }}
-            className="message-form"
-          >
-            <input
-              type="text"
-              name="message"
-              placeholder="Type your message"
-              className="message-input"
-            />
-            <button type="submit" className="message-submit">
-              Send
-            </button>
-          </form>
         </Offcanvas.Body>
+        {/* Add a form to send new messages */}
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            sendMessage();
+          }}
+          className="message-form"
+        >
+          <input
+            type="text"
+            name="message"
+            value={newMessage}
+            onChange={(e) => setNewMessage(e.target.value)}
+            placeholder="Type your message"
+            className="message-input"
+          />
+          <button type="submit" className="message-submit">
+            Send
+          </button>
+        </form>
       </Offcanvas>
+      
     </>
   );
 }
